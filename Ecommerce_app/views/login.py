@@ -16,10 +16,7 @@ class Login(View):
         password = request.POST.get('password')
         customer = Customer.get_customer_by_email(email)
         error_message = None
-        if customer:
-            flag = check_password(password, customer.password)
-            if flag:
-                request.session['customer'] = customer.id
+
 
                 if Login.return_url:
                     return HttpResponseRedirect(Login.return_url)
